@@ -170,116 +170,211 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
 }
 
 
-
-/* DESKTOP / PC POLISH
-   Scoped to min-width:761px. Mobile rules remain untouched. */
-@media(min-width:761px){
-  /* Sharper, more intentional text rendering. */
-  body{
-    text-rendering:optimizeLegibility;
-    -webkit-font-smoothing:antialiased;
+/* =========================================
+   MOBILE MOTION + TOUCH POLISH
+   Scoped ONLY to phones/tablets <= 760px.
+   Desktop styles are untouched.
+   ========================================= */
+@media (max-width:760px){
+  html,body{
+    -webkit-text-size-adjust:100%;
+    overscroll-behavior-x:none;
   }
 
-  /* Give the nav a more premium glass transition without changing its layout. */
-  .nav{
-    transition:
-      background .45s ease,
-      border-color .45s ease,
-      box-shadow .45s ease,
-      transform .45s var(--ease);
-  }
-  .nav.nav-scrolled{
-    background:rgba(20,19,17,.88);
-    border-color:rgba(241,238,231,.16);
-    box-shadow:0 16px 45px rgba(0,0,0,.16);
-    transform:translateY(-2px);
-  }
-
-  /* Cursor-follow glow for the hero, subtle enough to preserve the original look. */
-  .hero:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    z-index:1;
-    background:radial-gradient(
-      420px circle at var(--cursor-x,50%) var(--cursor-y,50%),
-      rgba(185,160,113,.075),
-      transparent 68%
-    );
+  /* Lightweight reveal animation. */
+  .m-reveal{
     opacity:0;
-    transition:opacity .5s ease;
+    transform:translate3d(0,24px,0);
+    transition:
+      opacity .65s cubic-bezier(.16,1,.3,1),
+      transform .75s cubic-bezier(.16,1,.3,1);
   }
-  .hero.cursor-active:after{opacity:1}
+  .m-reveal.m-in{
+    opacity:1;
+    transform:none;
+  }
 
-  /* More depth when hovering projects. */
+  /* Hero gets a very subtle breathing effect instead of desktop scroll choreography. */
+  .hero-orbit{
+    animation:mobileOrbit 12s ease-in-out infinite alternate;
+  }
+  .hero-flare{
+    animation:mobileFlare 7s ease-in-out infinite alternate;
+  }
+  @keyframes mobileOrbit{
+    from{transform:translate3d(0,0,0) rotate(-3deg) scale(.98)}
+    to{transform:translate3d(-7px,10px,0) rotate(4deg) scale(1.02)}
+  }
+  @keyframes mobileFlare{
+    from{transform:scale(.96);opacity:.7}
+    to{transform:scale(1.04);opacity:.95}
+  }
+
+  /* Native-feeling touch feedback. */
+  .btn,.nav-cta,.project,.instagram-button,.social a{
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+  }
+  .btn:active,.nav-cta:active,.instagram-button:active,.social a:active{
+    transform:scale(.97)!important;
+  }
+
   .project{
-    transition:transform .55s var(--ease);
+    transition:transform .45s cubic-bezier(.16,1,.3,1);
   }
-  .project:hover{
-    transform:translateY(-7px);
+  .project:active{
+    transform:translateY(-3px);
   }
-  .project:hover .project-media{
-    box-shadow:0 24px 65px rgba(30,27,22,.18);
+  .project:active .project-media img{
+    transform:scale(1.025);
   }
 
-  /* Better image interaction without replacing the existing hover treatment. */
+  /* A restrained image spotlight follows the finger while pressing. */
+  .project-media{
+    position:relative;
+    overflow:hidden;
+  }
   .project-media:after{
     content:"";
     position:absolute;
     inset:0;
     pointer-events:none;
-    z-index:3;
+    z-index:4;
     opacity:0;
     background:radial-gradient(
-      280px circle at var(--cursor-x,50%) var(--cursor-y,50%),
-      rgba(255,255,255,.13),
-      transparent 68%
+      150px circle at var(--touch-x,50%) var(--touch-y,50%),
+      rgba(255,255,255,.14),
+      transparent 70%
     );
-    transition:opacity .35s ease;
+    transition:opacity .25s ease;
   }
-  .project:hover .project-media:after{opacity:1}
+  .project.is-touching .project-media:after{opacity:1}
 
-  /* Premium button sheen on hover. */
-  .btn{
+  /* Services receive a quiet active state as they enter view. */
+  .service-panel{
+    transition:background .7s ease;
+  }
+  .service-panel.mobile-active{
+    background:radial-gradient(
+      circle at 82% 28%,
+      rgba(185,160,113,.065),
+      transparent 38%
+    );
+  }
+
+  /* Keep the existing progress UI; add only a tiny mobile accent. */
+  .mobile-scroll-progress{
+    position:fixed;
+    left:50%;
+    bottom:max(10px,env(safe-area-inset-bottom));
+    width:72px;
+    height:2px;
+    border-radius:99px;
+    overflow:hidden;
+    background:rgba(241,238,231,.16);
+    transform:translateX(-50%) scaleX(.85);
+    transform-origin:center;
+    opacity:0;
+    z-index:94;
+    pointer-events:none;
+    transition:opacity .3s ease,transform .3s ease;
+  }
+  .mobile-scroll-progress.visible{
+    opacity:1;
+    transform:translateX(-50%) scaleX(1);
+  }
+  .mobile-scroll-progress span{
+    display:block;
+    width:100%;
+    height:100%;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left;
+  }
+
+  /* Respect device safe areas without changing desktop. */
+  .instagram-contact{
+    bottom:max(14px,env(safe-area-inset-bottom));
+  }
+}
+
+/* Reduced motion wins over the mobile enhancements. */
+@media (max-width:760px) and (prefers-reduced-motion:reduce){
+  .hero-orbit,.hero-flare{animation:none!important}
+  .m-reveal{opacity:1;transform:none;transition:none}
+  .mobile-scroll-progress{display:none}
+}
+
+
+/* =========================================
+   DESKTOP / PC MICRO-POLISH
+   Scoped ONLY above 760px.
+   Does not alter the mobile system.
+   ========================================= */
+@media (min-width:761px){
+  /* Preserve layout; only improve feedback. */
+  .nav{
+    transition:
+      background .45s var(--ease),
+      border-color .45s var(--ease),
+      box-shadow .45s var(--ease);
+  }
+
+  .project{
+    transition:transform .55s var(--ease);
+  }
+  .project:hover{
+    transform:translateY(-5px);
+  }
+
+  .project-media{
+    transition:box-shadow .55s var(--ease);
+  }
+  .project:hover .project-media{
+    box-shadow:0 22px 60px rgba(0,0,0,.16);
+  }
+
+  /* Elegant button highlight, no geometry/layout changes. */
+  .btn,.nav-cta{
     position:relative;
     overflow:hidden;
-    isolation:isolate;
   }
-  .btn:before{
+  .btn:after,.nav-cta:after{
     content:"";
     position:absolute;
-    top:-80%;
-    left:-35%;
+    top:-70%;
+    left:-45%;
     width:24%;
-    height:260%;
-    background:rgba(255,255,255,.11);
-    transform:rotate(18deg) translateX(-180%);
+    height:240%;
+    background:rgba(255,255,255,.13);
+    transform:rotate(18deg) translateX(-260%);
     transition:transform .7s var(--ease);
     pointer-events:none;
-    z-index:-1;
   }
-  .btn:hover:before{transform:rotate(18deg) translateX(700%)}
-
-  /* Service panels feel more dimensional when hovered. */
-  .service-panel{
-    transition:background .6s ease;
-  }
-  .service-panel:hover{
-    background:
-      radial-gradient(circle at 80% 30%,rgba(185,160,113,.055),transparent 34%),
-      transparent;
+  .btn:hover:after,.nav-cta:hover:after{
+    transform:rotate(18deg) translateX(680%);
   }
 
-  /* Make the large statement feel alive with tiny tracking changes. */
-  .statement-text{
-    transition:letter-spacing .8s var(--ease);
+  /* Very subtle hero cursor light; never moves the layout. */
+  .hero{
+    --hero-x:50%;
+    --hero-y:50%;
   }
-  .statement-text:hover{
-    letter-spacing:-.018em;
+  .hero:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:radial-gradient(
+      380px circle at var(--hero-x) var(--hero-y),
+      rgba(185,160,113,.055),
+      transparent 70%
+    );
+    opacity:0;
+    transition:opacity .4s ease;
   }
+  .hero.pointer-active:after{opacity:1}
 
-  /* Footer links get a clean underline animation. */
   footer a{
     position:relative;
   }
@@ -294,114 +389,6 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
     transition:right .35s var(--ease);
   }
   footer a:hover:after{right:0}
-}
-
-/* MOBILE-ONLY INTERACTION ENHANCEMENTS
-   Everything here is scoped to <=760px, so desktop/PC styles remain untouched. */
-@media(max-width:760px){
-  .mobile-touch{
-    -webkit-tap-highlight-color:transparent;
-    touch-action:manipulation;
-  }
-
-  /* Smooth, lightweight entrance animation for mobile sections. */
-  .mobile-reveal{
-    opacity:0;
-    transform:translate3d(0,30px,0) scale(.985);
-    transition:
-      opacity .7s var(--ease),
-      transform .8s var(--ease);
-    will-change:opacity,transform;
-  }
-  .mobile-reveal.is-visible{
-    opacity:1;
-    transform:none;
-  }
-
-  /* Stagger cards naturally as they enter the viewport. */
-  .projects-grid .project.mobile-reveal:nth-child(2){transition-delay:.09s}
-  .service-panel.mobile-reveal:nth-child(2){transition-delay:.07s}
-  .service-panel.mobile-reveal:nth-child(3){transition-delay:.14s}
-
-  /* Better touch feedback without affecting desktop hover states. */
-  .mobile-touch:active{
-    transform:scale(.975)!important;
-  }
-
-  .project.mobile-touch:active .project-media{
-    transform:translateY(-2px);
-    box-shadow:0 16px 38px rgba(30,27,22,.18);
-  }
-  .project.mobile-touch:active .project-media img{
-    transform:scale(1.025);
-    filter:saturate(.95);
-  }
-
-  /* Interactive photo stack: subtle tilt/scale while the user presses it. */
-  .photo-stack.mobile-touching .photo-card:first-child{
-    transform:translate3d(0,-5px,0) rotate(-1.2deg) scale(1.015)!important;
-    transition:transform .35s var(--ease);
-  }
-
-  /* Mobile service cards respond as they become the focused section. */
-  .service-panel.mobile-focused{
-    background:
-      radial-gradient(circle at 90% 20%,rgba(185,160,113,.07),transparent 32%),
-      transparent;
-  }
-  .service-panel.mobile-focused .service-num-big{
-    color:rgba(185,160,113,.26);
-    transition:color .6s var(--ease);
-  }
-
-  /* Small scroll-progress line: unobtrusive and mobile-only. */
-  .mobile-progress{
-    position:fixed;
-    left:50%;
-    bottom:max(10px,env(safe-area-inset-bottom));
-    width:76px;
-    height:3px;
-    border-radius:999px;
-    overflow:hidden;
-    transform:translateX(-50%) scale(.9);
-    background:rgba(241,238,231,.14);
-    opacity:0;
-    z-index:68;
-    pointer-events:none;
-    transition:opacity .35s ease,transform .35s var(--ease);
-  }
-  .mobile-progress.is-visible{
-    opacity:1;
-    transform:translateX(-50%) scale(1);
-  }
-  .mobile-progress span{
-    display:block;
-    width:100%;
-    height:100%;
-    border-radius:inherit;
-    background:var(--gold);
-    transform:scaleX(0);
-    transform-origin:left;
-  }
-
-  /* Floating Instagram button gets a small attention pulse after load. */
-  .instagram-button.mobile-pulse{
-    animation:mobilePulse 1.8s var(--ease) 1;
-  }
-  @keyframes mobilePulse{
-    0%{transform:scale(1)}
-    25%{transform:scale(1.08) rotate(-3deg)}
-    50%{transform:scale(.98)}
-    75%{transform:scale(1.04) rotate(2deg)}
-    100%{transform:scale(1)}
-  }
-}
-
-/* Do not animate these mobile enhancements for users who request reduced motion. */
-@media(max-width:760px) and (prefers-reduced-motion:reduce){
-  .mobile-reveal{opacity:1;transform:none;transition:none}
-  .instagram-button.mobile-pulse{animation:none}
-  .mobile-progress{display:none}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -593,114 +580,90 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
         gsap.fromTo(img,{yPercent:-5,scale:1.08},{yPercent:5,scale:1.03,ease:'none',scrollTrigger:{trigger:img.closest('.project'),start:'top bottom',end:'bottom top',scrub:1.2}});
       });
     }
-    gsap.utils.toArray('.js-reveal').forEach(el=>{
-      gsap.fromTo(el,{y:45,opacity:0},{y:0,opacity:1,duration:1,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
-    });
+    if(!mobile){
+      gsap.utils.toArray('.js-reveal').forEach(el=>{
+        gsap.fromTo(el,{y:45,opacity:0},{y:0,opacity:1,duration:1,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+      });
+    }
 
-    // Statement stretches apart on scroll.
-    gsap.to('.statement-word:first-child',{x:-65,ease:'none',scrollTrigger:{trigger:'.statement',start:'top bottom',end:'bottom top',scrub:1}});
-    gsap.to('.statement-word:last-child',{x:65,ease:'none',scrollTrigger:{trigger:'.statement',start:'top bottom',end:'bottom top',scrub:1}});
-    gsap.fromTo('.statement-text',{scale:.92,opacity:.3},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:'.statement-text',start:'top 90%',end:'top 35%',scrub:1}});
-
-    gsap.to('.about-copy',{y:-35,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:1}});
-    gsap.fromTo('.contact-box',{y:80,opacity:.2},{y:0,opacity:1,ease:'power4.out',scrollTrigger:{trigger:'.contact-box',start:'top 88%',once:true}});
-
-
-    /* MOBILE-ONLY interaction layer. Desktop/PC behavior is intentionally untouched. */
+    /* Mobile-only interaction system. */
     if(mobile){
-      const progress=document.createElement('div');
-      progress.className='mobile-progress';
-      progress.innerHTML='<span></span>';
-      document.body.appendChild(progress);
-      const progressFill=progress.querySelector('span');
+      const mobileProgress=document.createElement('div');
+      mobileProgress.className='mobile-scroll-progress';
+      mobileProgress.innerHTML='<span></span>';
+      document.body.appendChild(mobileProgress);
+      const mobileFill=mobileProgress.querySelector('span');
 
-      const updateProgress=()=>{
+      const updateMobileProgress=()=>{
         const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
-        const value=Math.min(1,Math.max(0,window.scrollY/max));
-        progressFill.style.transform=`scaleX(${value})`;
-        progress.classList.toggle('is-visible',window.scrollY>80 && value<.985);
+        const p=Math.min(1,Math.max(0,window.scrollY/max));
+        mobileFill.style.transform=`scaleX(${p})`;
+        mobileProgress.classList.toggle('visible',window.scrollY>100 && p<.985);
       };
-
-      let progressFrame=0;
+      let mobileScrollFrame=0;
       window.addEventListener('scroll',()=>{
-        if(progressFrame)return;
-        progressFrame=requestAnimationFrame(()=>{
-          updateProgress();
-          progressFrame=0;
+        if(mobileScrollFrame)return;
+        mobileScrollFrame=requestAnimationFrame(()=>{
+          updateMobileProgress();
+          mobileScrollFrame=0;
         });
       },{passive:true});
-      updateProgress();
+      updateMobileProgress();
 
-      /* Reveal-on-scroll using IntersectionObserver: cheap on mobile and independent of desktop GSAP. */
-      const mobileRevealTargets=[
+      /* Native IntersectionObserver keeps the mobile animation smooth and cheap. */
+      const mobileTargets=[
         ...document.querySelectorAll(
-          '.section-head,.service-panel,.cinema-copy,.photo-stack,.projects-grid .project,.statement-text,.about-copy,.about-side,.contact-box'
+          '.section-head,.service-panel,.cinema-copy,.photo-stack,.project,.statement-text,.about-copy,.about-side,.contact-box'
         )
       ];
-
-      mobileRevealTargets.forEach((el,index)=>{
-        el.classList.add('mobile-reveal','mobile-touch');
+      mobileTargets.forEach((el,i)=>{
+        el.classList.add('m-reveal');
         if(el.classList.contains('project')){
-          el.style.transitionDelay=`${(index%2)*70}ms`;
+          el.style.transitionDelay=`${(i%3)*60}ms`;
         }
       });
 
       const revealObserver=new IntersectionObserver(entries=>{
         entries.forEach(entry=>{
           if(entry.isIntersecting){
-            entry.target.classList.add('is-visible');
+            entry.target.classList.add('m-in');
             revealObserver.unobserve(entry.target);
           }
         });
-      },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+      },{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+      mobileTargets.forEach(el=>revealObserver.observe(el));
 
-      mobileRevealTargets.forEach(el=>revealObserver.observe(el));
-
-      /* Service focus state follows the user's viewport position. */
+      /* Services react to the section currently in view. */
       const servicePanels=[...document.querySelectorAll('.service-panel')];
       const serviceObserver=new IntersectionObserver(entries=>{
         entries.forEach(entry=>{
           if(entry.isIntersecting){
-            servicePanels.forEach(p=>p.classList.remove('mobile-focused'));
-            entry.target.classList.add('mobile-focused');
+            servicePanels.forEach(p=>p.classList.remove('mobile-active'));
+            entry.target.classList.add('mobile-active');
           }
         });
       },{threshold:.55});
       servicePanels.forEach(p=>serviceObserver.observe(p));
 
-      /* Press/drag feedback on the photo stack, but never hijack scrolling. */
-      const stack=document.querySelector('.photo-stack');
-      if(stack){
-        stack.classList.add('mobile-touch');
-        stack.addEventListener('pointerdown',()=>{
-          stack.classList.add('mobile-touching');
-        },{passive:true});
-        ['pointerup','pointercancel','pointerleave'].forEach(type=>{
-          stack.addEventListener(type,()=>{
-            stack.classList.remove('mobile-touching');
-          },{passive:true});
-        });
-      }
-
-      /* Native-feeling project image spotlight following a finger. */
+      /* Touch spotlight on project imagery. */
       document.querySelectorAll('.project').forEach(project=>{
         const media=project.querySelector('.project-media');
         if(!media)return;
 
         const clear=()=>{
-          project.classList.remove('mobile-touching');
+          project.classList.remove('is-touching');
           media.style.removeProperty('--touch-x');
           media.style.removeProperty('--touch-y');
         };
 
         project.addEventListener('pointerdown',e=>{
-          project.classList.add('mobile-touching');
+          project.classList.add('is-touching');
           const r=media.getBoundingClientRect();
           media.style.setProperty('--touch-x',`${((e.clientX-r.left)/r.width)*100}%`);
           media.style.setProperty('--touch-y',`${((e.clientY-r.top)/r.height)*100}%`);
         },{passive:true});
         project.addEventListener('pointermove',e=>{
-          if(!project.classList.contains('mobile-touching'))return;
+          if(!project.classList.contains('is-touching'))return;
           const r=media.getBoundingClientRect();
           media.style.setProperty('--touch-x',`${((e.clientX-r.left)/r.width)*100}%`);
           media.style.setProperty('--touch-y',`${((e.clientY-r.top)/r.height)*100}%`);
@@ -709,60 +672,31 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
         project.addEventListener('pointercancel',clear,{passive:true});
         project.addEventListener('pointerleave',clear,{passive:true});
       });
+    }
 
-      /* Add a one-time micro-interaction to the floating Instagram CTA. */
-      const insta=document.querySelector('.instagram-button');
-      if(insta){
-        setTimeout(()=>insta.classList.add('mobile-pulse'),1200);
-        setTimeout(()=>insta.classList.remove('mobile-pulse'),3200);
-      }
+    // Statement/about/contact scrub motion stays desktop-only.
+    if(!mobile){
+      gsap.to('.statement-word:first-child',{x:-65,ease:'none',scrollTrigger:{trigger:'.statement',start:'top bottom',end:'bottom top',scrub:1}});
+      gsap.to('.statement-word:last-child',{x:65,ease:'none',scrollTrigger:{trigger:'.statement',start:'top bottom',end:'bottom top',scrub:1}});
+      gsap.fromTo('.statement-text',{scale:.92,opacity:.3},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:'.statement-text',start:'top 90%',end:'top 35%',scrub:1}});
+
+      gsap.to('.about-copy',{y:-35,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:1}});
+      gsap.fromTo('.contact-box',{y:80,opacity:.2},{y:0,opacity:1,ease:'power4.out',scrollTrigger:{trigger:'.contact-box',start:'top 88%',once:true}});
     }
 
 
-    /* PC-only polish. This block never runs on mobile. */
+    /* Desktop-only micro-interactions. No layout movement, no scroll hijacking. */
     if(!mobile){
-      const nav=document.querySelector('.nav');
       const hero=document.querySelector('.hero');
-
-      /* Compact nav state after the first scroll. */
-      let navFrame=0;
-      window.addEventListener('scroll',()=>{
-        if(navFrame)return;
-        navFrame=requestAnimationFrame(()=>{
-          nav.classList.toggle('nav-scrolled',window.scrollY>70);
-          navFrame=0;
-        });
-      },{passive:true});
-
-      /* One efficient pointer listener for hero/project lighting. */
-      let pointerFrame=0;
-      let px=50,py=50;
-      const updatePointerVars=()=>{
-        document.documentElement.style.setProperty('--cursor-x',`${px}%`);
-        document.documentElement.style.setProperty('--cursor-y',`${py}%`);
-        pointerFrame=0;
-      };
-
       if(hero){
-        hero.addEventListener('pointerenter',()=>hero.classList.add('cursor-active'),{passive:true});
-        hero.addEventListener('pointerleave',()=>hero.classList.remove('cursor-active'),{passive:true});
+        hero.addEventListener('pointerenter',()=>hero.classList.add('pointer-active'),{passive:true});
+        hero.addEventListener('pointerleave',()=>hero.classList.remove('pointer-active'),{passive:true});
         hero.addEventListener('pointermove',e=>{
           const r=hero.getBoundingClientRect();
-          px=((e.clientX-r.left)/r.width)*100;
-          py=((e.clientY-r.top)/r.height)*100;
-          if(!pointerFrame)pointerFrame=requestAnimationFrame(updatePointerVars);
+          hero.style.setProperty('--hero-x',`${((e.clientX-r.left)/r.width)*100}%`);
+          hero.style.setProperty('--hero-y',`${((e.clientY-r.top)/r.height)*100}%`);
         },{passive:true});
       }
-
-      document.querySelectorAll('.project').forEach(project=>{
-        const media=project.querySelector('.project-media');
-        if(!media)return;
-        media.addEventListener('pointermove',e=>{
-          const r=media.getBoundingClientRect();
-          media.style.setProperty('--cursor-x',`${((e.clientX-r.left)/r.width)*100}%`);
-          media.style.setProperty('--cursor-y',`${((e.clientY-r.top)/r.height)*100}%`);
-        },{passive:true});
-      });
     }
 
     // Progress + compact nav.
