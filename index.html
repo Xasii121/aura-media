@@ -107,6 +107,68 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
 .instagram-contact:hover .instagram-label,.instagram-contact:focus-within .instagram-label{opacity:1;transform:translateX(0)}
 @media(max-width:760px){.instagram-contact{right:16px;bottom:16px}.instagram-button{width:54px;height:54px}.instagram-label{display:none}}
 
+/* MOBILE PERFORMANCE PASS — native scroll, smaller paint areas, no pinned scenes */
+@media(max-width:760px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  body{-webkit-text-size-adjust:100%;overscroll-behavior-x:none}
+  .loader{transition-duration:.45s}
+  .noise{opacity:.018}
+  .nav{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .hero{min-height:auto;padding-top:132px;padding-bottom:78px}
+  .hero-grid{opacity:.08;background-size:48px 48px;transform:none!important}
+  .hero-orbit{width:88vw;height:88vw;right:-34vw;top:18%;opacity:.7;will-change:auto}
+  .hero-flare{width:68vw;height:68vw;right:-16vw;top:23%;filter:blur(12px);animation:none}
+  h1{font-size:clamp(3.55rem,16vw,5.6rem);line-height:.86;letter-spacing:-.07em}
+  .hero-bottom{display:block;margin-top:34px}
+  .hero-copy{font-size:14px;line-height:1.7;max-width:34rem}
+  .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+  .hero-actions .btn{min-height:46px;padding:0 12px;font-size:9px}
+  .section{padding:82px 7vw}
+  .section-head{margin-bottom:40px}
+  .section-title{font-size:clamp(2.7rem,12vw,4.8rem)}
+  .section-intro{font-size:12px;line-height:1.65}
+  .services-pin{height:auto!important}
+  .services-stage{position:relative;height:auto;min-height:0;display:block;overflow:visible}
+  .services-rail{display:block;width:auto;transform:none!important}
+  .service-panel{width:100%;min-height:78svh;padding:105px 7vw 88px;display:grid;grid-template-columns:1fr;gap:22px;align-content:center}
+  .service-num-big{position:absolute;top:82px;left:7vw;font-size:3.3rem}
+  .service-panel h3{font-size:clamp(3rem,13vw,5rem);line-height:.88;max-width:92vw;margin:26px 0 0}
+  .service-panel p{grid-column:auto;max-width:34rem;margin:0;align-self:auto;font-size:12px;line-height:1.75}
+  .service-panel:after{width:45vw;height:45vw;right:-15vw;bottom:12vh;opacity:.7}
+  .service-index{left:7vw;top:58px}
+  .service-bar{left:7vw;right:7vw;bottom:44px}
+  .marquee{padding:16px 0}
+  .marquee-track{animation:none!important;transform:none!important}
+  .marquee-item{font-size:1.1rem;gap:13px;padding-right:15px}
+  .work-cinema{height:auto!important}
+  .cinema-sticky{position:relative;height:auto;min-height:0;padding:82px 7vw 70px;display:block}
+  .cinema-copy{position:relative;left:auto;top:auto;max-width:100%}
+  .cinema-copy h2{font-size:clamp(3rem,13vw,5rem);margin-top:10px}
+  .cinema-copy p{max-width:34rem;font-size:12px}
+  .photo-stack{position:relative;left:auto;right:auto;top:auto;width:78vw;height:96vw;max-height:none;margin:75px auto 35px;transform:none!important;perspective:none}
+  .photo-card{will-change:auto;box-shadow:0 18px 42px rgba(30,27,22,.14)}
+  .photo-card:nth-child(2){transform:translate3d(20px,18px,0) rotate(4deg)}
+  .photo-card:nth-child(3){transform:translate3d(-15px,27px,0) rotate(-3deg)}
+  .photo-card:nth-child(4){transform:translate3d(25px,38px,0) rotate(5deg)}
+  .cinema-progress{left:7vw;right:7vw;bottom:28px}
+  .projects-grid{grid-template-columns:1fr;gap:48px;margin-top:65px}
+  .project:nth-child(2){margin-top:0}
+  .project-media,.project:nth-child(2) .project-media{aspect-ratio:1.18}
+  .project-media img{transition:transform .7s var(--ease),filter .7s}
+  .statement{min-height:70svh}
+  .statement-text{font-size:clamp(2.75rem,12vw,5rem)}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .about-copy{font-size:clamp(2rem,9vw,3.8rem)}
+  .contact{padding-top:72px}
+  .contact-box{padding:48px 7vw}
+  .contact-box h2{font-size:clamp(3.2rem,13vw,5.5rem);margin:18px 0 48px}
+  .contact-row{align-items:flex-start;flex-direction:column;gap:18px}
+  .email{font-size:1rem;overflow-wrap:anywhere}
+  footer{padding-left:7vw;padding-right:7vw}
+  .instagram-contact{right:14px;bottom:14px}
+  .instagram-button{width:52px;height:52px}
+}
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.loader{display:none}body.is-loading{overflow:auto}.js-reveal,.hero-item,.hero-copy,.hero-actions,h1 .line>span{opacity:1!important;transform:none!important}.services-pin,.work-cinema{height:auto}.services-stage{position:relative;height:auto}.services-rail{display:block;width:auto}.service-panel{width:auto;min-height:auto;padding:70px 7vw;border-bottom:1px solid var(--line)}.cinema-sticky{position:relative;height:auto;min-height:100vh}.photo-stack{position:relative;left:auto;right:auto;top:auto;transform:none;margin:180px auto 60px}.photo-card{display:none}.photo-card:first-child{display:block;position:relative}.cinema-progress{display:none}
 }
@@ -218,7 +280,9 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
     gsap.registerPlugin(ScrollTrigger);
 
     let lenis=null;
-    if(window.Lenis){
+    // Native scrolling is faster and more battery-friendly on phones.
+    // Lenis is reserved for desktop where the cinematic scroll system benefits from it.
+    if(window.Lenis && !mobile){
       lenis=new Lenis({duration:1.05,smoothWheel:true,syncTouch:false,wheelMultiplier:.92,touchMultiplier:1});
       lenis.on('scroll',ScrollTrigger.update);
       gsap.ticker.add(t=>lenis.raf(t*1000));
@@ -232,9 +296,11 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       .fromTo('.hero-orbit',{scale:.82,opacity:0,rotation:-20},{scale:1,opacity:1,rotation:0,duration:1.6},'-.9')
       .fromTo('.hero-flare',{scale:.65,opacity:0},{scale:1,opacity:1,duration:1.5},'-=1.2');
 
-    gsap.to('.hero-orbit',{y:170,rotation:20,scale:.86,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1.2}});
-    gsap.to('.hero-grid',{y:120,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
-    gsap.to('.hero-flare',{y:130,x:-80,scale:.75,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1.5}});
+    if(!mobile){
+      gsap.to('.hero-orbit',{y:170,rotation:20,scale:.86,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1.2}});
+      gsap.to('.hero-grid',{y:120,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
+      gsap.to('.hero-flare',{y:130,x:-80,scale:.75,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1.5}});
+    }
 
     // Horizontal pinned services: every service takes over the viewport.
     const rail=document.querySelector('.services-rail');
@@ -250,25 +316,25 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
         gsap.fromTo(p.querySelector('h3'),{x:90,opacity:.2},{x:0,opacity:1,ease:'none',scrollTrigger:{trigger:'.services-pin',start:()=>`${i/(panels.length)} top`,end:()=>`${(i+1)/(panels.length)} top`,scrub:1}});
         gsap.fromTo(p.querySelector('p'),{y:35,opacity:.1},{y:0,opacity:1,ease:'none',scrollTrigger:{trigger:'.services-pin',start:()=>`${i/(panels.length)} top`,end:()=>`${(i+1)/(panels.length)} top`,scrub:1}});
       });
-    } else if(rail && panels.length){
-      // Mobile keeps the same sequence without a heavy pinned horizontal transform.
-      gsap.utils.toArray('.service-panel').forEach((p,i)=>{
+    } else if(rail && panels.length && !mobile){
+      gsap.utils.toArray('.service-panel').forEach((p)=>{
         gsap.fromTo(p,{opacity:.35,y:30},{opacity:1,y:0,duration:.8,scrollTrigger:{trigger:p,start:'top 82%',once:true}});
       });
     }
 
     // Marquee with scroll velocity.
     const marquee=document.querySelector('.marquee-track');
-    if(marquee){
+    if(marquee && !mobile){
       const loop=marquee.scrollWidth/3;
       gsap.to(marquee,{x:-loop,duration:26,ease:'none',repeat:-1});
       ScrollTrigger.create({start:0,end:'max',onUpdate:self=>gsap.to(marquee,{skewX:gsap.utils.clamp(-4,4,self.getVelocity()/800),duration:.28,overwrite:true})});
     }
 
-    // Photo shuffle / stack: cards physically trade places as the user scrolls.
+    // Photo shuffle / stack. The full scroll choreography stays desktop-only;
+    // phones use a static stacked composition to avoid long pinned-scroll work.
     const cinema=document.querySelector('.work-cinema');
     const cards=gsap.utils.toArray('.photo-card');
-    if(cinema && cards.length){
+    if(cinema && cards.length && !mobile){
       const tl=gsap.timeline({scrollTrigger:{trigger:cinema,start:'top top',end:'bottom bottom',scrub:1.15}});
       tl.to(cards[0],{x:-innerWidth*.20,y:-innerHeight*.08,rotation:-12,scale:.82,ease:'power2.inOut'},0)
         .to(cards[1],{x:-innerWidth*.03,y:-innerHeight*.02,rotation:-2,scale:.94,ease:'power2.inOut'},0)
@@ -282,15 +348,16 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
         .to(cards[1],{x:0,y:0,rotation:0,scale:1,ease:'power2.inOut'},.82)
         .to(cards[2],{x:-innerWidth*.17,y:innerHeight*.04,rotation:-9,scale:.79,ease:'power2.inOut'},.82)
         .to(cards[3],{x:innerWidth*.05,y:innerHeight*.08,rotation:6,scale:.84,ease:'power2.inOut'},.82);
-
       gsap.fromTo('.cinema-copy',{y:60,opacity:.25},{y:-30,opacity:1,ease:'none',scrollTrigger:{trigger:cinema,start:'top bottom',end:'bottom top',scrub:1}});
       gsap.fromTo('.cinema-progress span',{scaleX:0},{scaleX:1,ease:'none',scrollTrigger:{trigger:cinema,start:'top top',end:'bottom bottom',scrub:1}});
     }
 
     // Project cards: image depth + reveal.
-    gsap.utils.toArray('.project-media img').forEach(img=>{
-      gsap.fromTo(img,{yPercent:-5,scale:1.08},{yPercent:5,scale:1.03,ease:'none',scrollTrigger:{trigger:img.closest('.project'),start:'top bottom',end:'bottom top',scrub:1.2}});
-    });
+    if(!mobile){
+      gsap.utils.toArray('.project-media img').forEach(img=>{
+        gsap.fromTo(img,{yPercent:-5,scale:1.08},{yPercent:5,scale:1.03,ease:'none',scrollTrigger:{trigger:img.closest('.project'),start:'top bottom',end:'bottom top',scrub:1.2}});
+      });
+    }
     gsap.utils.toArray('.js-reveal').forEach(el=>{
       gsap.fromTo(el,{y:45,opacity:0},{y:0,opacity:1,duration:1,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
     });
