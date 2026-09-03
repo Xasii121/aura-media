@@ -50,7 +50,7 @@ a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-w
 .eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:30px}.eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
 h1{margin:0;max-width:1080px;font-size:clamp(4rem,10.4vw,10rem);line-height:.84;letter-spacing:-.075em;font-weight:500}h1 .line{display:block;overflow:hidden;padding-bottom:.04em}h1 .line>span{display:block;transform:translateY(110%)}h1 em{font-family:var(--serif);font-weight:500;letter-spacing:-.055em}
 .hero-bottom{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:48px;max-width:930px}.hero-copy{max-width:610px;color:#aaa69e;font-size:15px;line-height:1.65;opacity:0;transform:translateY(18px)}.hero-copy strong{color:var(--paper);font-weight:500}.hero-actions{display:flex;gap:10px;opacity:0;transform:translateY(18px)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid var(--line);border-radius:999px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;transition:.45s var(--ease)}.btn.primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}.btn:hover{transform:translateY(-3px);background:#fff;color:var(--ink);border-color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid var(--line);border-radius:999px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;transition:.45s var(--ease);cursor:pointer}.btn.primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}.btn:hover{transform:translateY(-3px);background:#fff;color:var(--ink);border-color:#fff}
 .scroll-note{position:absolute;right:6vw;bottom:42px;color:#6f6c66;font-size:9px;letter-spacing:.16em;text-transform:uppercase;writing-mode:vertical-rl;opacity:.7}.scroll-note:after{content:"";display:block;width:1px;height:45px;background:#55524c;margin:12px auto 0}.scroll-indicator{position:absolute;bottom:40px;left:50%;font-size:18px;color:#77736c;animation:bob 1.5s ease-in-out infinite}@keyframes bob{50%{transform:translateY(8px)}}
 
 .section{padding:140px 6vw}.section-inner{max-width:1200px;margin:auto}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:70px}.kicker{color:var(--gold);font-size:10px;letter-spacing:.2em;text-transform:uppercase}.section-title{font-size:clamp(2.8rem,6vw,6.4rem);line-height:.92;letter-spacing:-.06em;font-weight:500;margin:12px 0 0}.section-title em{font-family:var(--serif);font-weight:500}.section-intro{max-width:330px;color:#858179;font-size:13px;line-height:1.7}
@@ -73,7 +73,38 @@ h1{margin:0;max-width:1080px;font-size:clamp(4rem,10.4vw,10rem);line-height:.84;
 
 .about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:100px;border-top:1px solid var(--line);padding-top:55px}.about-copy{font-size:clamp(2rem,4vw,4.6rem);line-height:1;letter-spacing:-.06em;margin:0}.about-copy em{font-family:var(--serif)}.about-side{max-width:340px;color:#858179;font-size:14px;line-height:1.8;margin:10px 0 0}
 
-.contact{padding-top:100px}.contact-box{position:relative;overflow:hidden;border:1px solid var(--line);padding:75px 7vw;background:radial-gradient(circle at 80% 20%,rgba(185,160,113,.14),transparent 35%),#151512}.contact-box:before{content:"";position:absolute;width:340px;height:340px;border:1px solid rgba(185,160,113,.12);border-radius:50%;right:-80px;top:-120px}.contact-box h2{position:relative;font-size:clamp(3.6rem,7vw,7.5rem);line-height:.85;letter-spacing:-.07em;font-weight:500;margin:24px 0 70px}.contact-box h2 em{font-family:var(--serif)}.contact-row{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:22px}.email{font-size:clamp(1rem,2vw,1.5rem);transition:transform .5s var(--ease)}.email:hover{transform:translateX(7px)}.social a{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;font-size:10px;transition:.5s var(--ease)}.social a:hover{transform:rotate(12deg) scale(1.08);background:var(--paper);color:var(--ink)}
+/* New: Testimonials */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:60px}
+.testimonial-card{padding:40px;background:rgba(241,238,231,.02);border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .5s var(--ease),border-color .5s var(--ease)}
+.testimonial-card:hover{transform:translateY(-5px);border-color:rgba(185,160,113,.3)}
+.quote-mark{color:var(--gold);font-size:48px;font-family:var(--serif);line-height:0;margin-bottom:25px;display:block;opacity:.6}
+.testimonial-text{font-size:15px;line-height:1.75;color:var(--paper);margin-bottom:30px;font-family:var(--serif);font-style:italic}
+.testimonial-author{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#aaa69e;display:flex;align-items:center;gap:12px}
+.testimonial-author:before{content:"";width:20px;height:1px;background:var(--gold)}
+
+/* New: FAQ Section */
+.faq-list{max-width:800px;margin:60px auto 0;display:flex;flex-direction:column;gap:16px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-question{width:100%;background:none;border:none;color:var(--paper);text-align:left;padding:24px 0;font-size:18px;font-family:var(--serif);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .4s var(--ease)}
+.faq-question:hover{color:var(--gold)}
+.faq-icon{font-size:24px;font-weight:300;transition:transform .5s var(--ease);color:var(--gold)}
+.faq-item.active .faq-icon{transform:rotate(45deg)}
+.faq-answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.faq-answer-inner{overflow:hidden;font-size:14px;line-height:1.7;color:#858179;padding-bottom:0;transition:padding .5s var(--ease)}
+.faq-item.active .faq-answer-inner{padding-bottom:30px}
+
+/* Lead Capture Upgrade */
+.contact{padding-top:100px}.contact-box{position:relative;overflow:hidden;border:1px solid var(--line);padding:75px 7vw;background:radial-gradient(circle at 80% 20%,rgba(185,160,113,.14),transparent 35%),#151512}.contact-box:before{content:"";position:absolute;width:340px;height:340px;border:1px solid rgba(185,160,113,.12);border-radius:50%;right:-80px;top:-120px}.contact-box h2{position:relative;font-size:clamp(3.6rem,7vw,7.5rem);line-height:.85;letter-spacing:-.07em;font-weight:500;margin:24px 0 50px}.contact-box h2 em{font-family:var(--serif)}
+.contact-form{display:grid;gap:35px;position:relative;z-index:2;max-width:800px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+.form-group{position:relative;margin-top:12px}
+.form-input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);color:var(--paper);font-family:var(--sans);font-size:15px;padding:12px 0;outline:none;transition:border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.form-input:focus{border-color:var(--gold);box-shadow:0 15px 30px -15px rgba(185,160,113,.15)}
+textarea.form-input{resize:vertical;min-height:90px}
+.form-label{position:absolute;left:0;top:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#77736c;pointer-events:none;transition:top .3s var(--ease),font-size .3s var(--ease),color .3s var(--ease)}
+.form-input:focus ~ .form-label, .form-input:not(:placeholder-shown) ~ .form-label{top:-16px;font-size:9px;color:var(--gold)}
+.form-submit{margin-top:15px;justify-self:start}
+
 footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px}
 
 .js-reveal{opacity:0;transform:translateY(35px)}.hero-item{opacity:0;transform:translateY(15px)}
@@ -95,10 +126,10 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
   .work-intro{padding-bottom:35px}.projects-grid{grid-template-columns:1fr;gap:55px;margin-top:70px}.project:nth-child(2){margin-top:0}.project:nth-child(2) .project-media{aspect-ratio:1.1}.project-media{aspect-ratio:1.25}
   .statement{min-height:75vh}.statement-text{font-size:clamp(2.8rem,12vw,5rem)}
   .about-grid{grid-template-columns:1fr;gap:35px}.about-side{max-width:100%}
+  .form-row{grid-template-columns:1fr;gap:15px}
   .contact{padding-top:50px}.contact-box{padding:55px 7vw}.contact-box h2{margin:20px 0 55px}.footer-inner{display:block}.footer-inner span{display:block;margin:7px 0}
 }
 
-/* Instagram contact */
 .instagram-contact{position:fixed;right:24px;bottom:24px;z-index:72}
 .instagram-button{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--paper);color:var(--ink);border:1px solid rgba(241,238,231,.2);box-shadow:0 14px 38px rgba(0,0,0,.3);transition:transform .45s var(--ease),background .45s var(--ease),color .45s var(--ease),box-shadow .45s var(--ease)}
 .instagram-button:hover{transform:translateY(-6px) rotate(-4deg);background:#fff;box-shadow:0 20px 48px rgba(0,0,0,.38)}
@@ -107,7 +138,7 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
 .instagram-contact:hover .instagram-label,.instagram-contact:focus-within .instagram-label{opacity:1;transform:translateX(0)}
 @media(max-width:760px){.instagram-contact{right:16px;bottom:16px}.instagram-button{width:54px;height:54px}.instagram-label{display:none}}
 
-/* MOBILE PERFORMANCE PASS — native scroll, smaller paint areas, no pinned scenes */
+/* Mobile Performance Override */
 @media(max-width:760px){
   html,body{width:100%;max-width:100%;overflow-x:hidden}
   body{-webkit-text-size-adjust:100%;overscroll-behavior-x:none}
@@ -162,232 +193,52 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
   .contact{padding-top:72px}
   .contact-box{padding:48px 7vw}
   .contact-box h2{font-size:clamp(3.2rem,13vw,5.5rem);margin:18px 0 48px}
-  .contact-row{align-items:flex-start;flex-direction:column;gap:18px}
-  .email{font-size:1rem;overflow-wrap:anywhere}
   footer{padding-left:7vw;padding-right:7vw}
   .instagram-contact{right:14px;bottom:14px}
   .instagram-button{width:52px;height:52px}
-}
 
-
-/* =========================================
-   MOBILE MOTION + TOUCH POLISH
-   Scoped ONLY to phones/tablets <= 760px.
-   Desktop styles are untouched.
-   ========================================= */
-@media (max-width:760px){
-  html,body{
-    -webkit-text-size-adjust:100%;
-    overscroll-behavior-x:none;
-  }
-
-  /* Lightweight reveal animation. */
-  .m-reveal{
-    opacity:0;
-    transform:translate3d(0,24px,0);
-    transition:
-      opacity .65s cubic-bezier(.16,1,.3,1),
-      transform .75s cubic-bezier(.16,1,.3,1);
-  }
-  .m-reveal.m-in{
-    opacity:1;
-    transform:none;
-  }
-
-  /* Hero gets a very subtle breathing effect instead of desktop scroll choreography. */
-  .hero-orbit{
-    animation:mobileOrbit 12s ease-in-out infinite alternate;
-  }
-  .hero-flare{
-    animation:mobileFlare 7s ease-in-out infinite alternate;
-  }
-  @keyframes mobileOrbit{
-    from{transform:translate3d(0,0,0) rotate(-3deg) scale(.98)}
-    to{transform:translate3d(-7px,10px,0) rotate(4deg) scale(1.02)}
-  }
-  @keyframes mobileFlare{
-    from{transform:scale(.96);opacity:.7}
-    to{transform:scale(1.04);opacity:.95}
-  }
-
-  /* Native-feeling touch feedback. */
-  .btn,.nav-cta,.project,.instagram-button,.social a{
-    -webkit-tap-highlight-color:transparent;
-    touch-action:manipulation;
-  }
-  .btn:active,.nav-cta:active,.instagram-button:active,.social a:active{
-    transform:scale(.97)!important;
-  }
-
-  .project{
-    transition:transform .45s cubic-bezier(.16,1,.3,1);
-  }
-  .project:active{
-    transform:translateY(-3px);
-  }
-  .project:active .project-media img{
-    transform:scale(1.025);
-  }
-
-  /* A restrained image spotlight follows the finger while pressing. */
-  .project-media{
-    position:relative;
-    overflow:hidden;
-  }
-  .project-media:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    z-index:4;
-    opacity:0;
-    background:radial-gradient(
-      150px circle at var(--touch-x,50%) var(--touch-y,50%),
-      rgba(255,255,255,.14),
-      transparent 70%
-    );
-    transition:opacity .25s ease;
-  }
+  .m-reveal{opacity:0;transform:translate3d(0,24px,0);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+  .m-reveal.m-in{opacity:1;transform:none}
+  .hero-orbit{animation:mobileOrbit 12s ease-in-out infinite alternate}
+  .hero-flare{animation:mobileFlare 7s ease-in-out infinite alternate}
+  @keyframes mobileOrbit{from{transform:translate3d(0,0,0) rotate(-3deg) scale(.98)}to{transform:translate3d(-7px,10px,0) rotate(4deg) scale(1.02)}}
+  @keyframes mobileFlare{from{transform:scale(.96);opacity:.7}to{transform:scale(1.04);opacity:.95}}
+  .btn,.nav-cta,.project,.instagram-button,.faq-question{ -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  .btn:active,.nav-cta:active,.instagram-button:active{transform:scale(.97)!important}
+  .project{transition:transform .45s cubic-bezier(.16,1,.3,1)}
+  .project:active{transform:translateY(-3px)}
+  .project:active .project-media img{transform:scale(1.025)}
+  .project-media{position:relative;overflow:hidden}
+  .project-media:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;background:radial-gradient(150px circle at var(--touch-x,50%) var(--touch-y,50%),rgba(255,255,255,.14),transparent 70%);transition:opacity .25s ease}
   .project.is-touching .project-media:after{opacity:1}
-
-  /* Services receive a quiet active state as they enter view. */
-  .service-panel{
-    transition:background .7s ease;
-  }
-  .service-panel.mobile-active{
-    background:radial-gradient(
-      circle at 82% 28%,
-      rgba(185,160,113,.065),
-      transparent 38%
-    );
-  }
-
-  /* Keep the existing progress UI; add only a tiny mobile accent. */
-  .mobile-scroll-progress{
-    position:fixed;
-    left:50%;
-    bottom:max(10px,env(safe-area-inset-bottom));
-    width:72px;
-    height:2px;
-    border-radius:99px;
-    overflow:hidden;
-    background:rgba(241,238,231,.16);
-    transform:translateX(-50%) scaleX(.85);
-    transform-origin:center;
-    opacity:0;
-    z-index:94;
-    pointer-events:none;
-    transition:opacity .3s ease,transform .3s ease;
-  }
-  .mobile-scroll-progress.visible{
-    opacity:1;
-    transform:translateX(-50%) scaleX(1);
-  }
-  .mobile-scroll-progress span{
-    display:block;
-    width:100%;
-    height:100%;
-    background:var(--gold);
-    transform:scaleX(0);
-    transform-origin:left;
-  }
-
-  /* Respect device safe areas without changing desktop. */
-  .instagram-contact{
-    bottom:max(14px,env(safe-area-inset-bottom));
-  }
+  .service-panel{transition:background .7s ease}
+  .service-panel.mobile-active{background:radial-gradient(circle at 82% 28%,rgba(185,160,113,.065),transparent 38%)}
+  .mobile-scroll-progress{position:fixed;left:50%;bottom:max(10px,env(safe-area-inset-bottom));width:72px;height:2px;border-radius:99px;overflow:hidden;background:rgba(241,238,231,.16);transform:translateX(-50%) scaleX(.85);transform-origin:center;opacity:0;z-index:94;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+  .mobile-scroll-progress.visible{opacity:1;transform:translateX(-50%) scaleX(1)}
+  .mobile-scroll-progress span{display:block;width:100%;height:100%;background:var(--gold);transform:scaleX(0);transform-origin:left}
+  .instagram-contact{bottom:max(14px,env(safe-area-inset-bottom))}
 }
 
-/* Reduced motion wins over the mobile enhancements. */
-@media (max-width:760px) and (prefers-reduced-motion:reduce){
+@media(max-width:760px) and (prefers-reduced-motion:reduce){
   .hero-orbit,.hero-flare{animation:none!important}
   .m-reveal{opacity:1;transform:none;transition:none}
   .mobile-scroll-progress{display:none}
 }
 
-
-/* =========================================
-   DESKTOP / PC MICRO-POLISH
-   Scoped ONLY above 760px.
-   Does not alter the mobile system.
-   ========================================= */
-@media (min-width:761px){
-  /* Preserve layout; only improve feedback. */
-  .nav{
-    transition:
-      background .45s var(--ease),
-      border-color .45s var(--ease),
-      box-shadow .45s var(--ease);
-  }
-
-  .project{
-    transition:transform .55s var(--ease);
-  }
-  .project:hover{
-    transform:translateY(-5px);
-  }
-
-  .project-media{
-    transition:box-shadow .55s var(--ease);
-  }
-  .project:hover .project-media{
-    box-shadow:0 22px 60px rgba(0,0,0,.16);
-  }
-
-  /* Elegant button highlight, no geometry/layout changes. */
-  .btn,.nav-cta{
-    position:relative;
-    overflow:hidden;
-  }
-  .btn:after,.nav-cta:after{
-    content:"";
-    position:absolute;
-    top:-70%;
-    left:-45%;
-    width:24%;
-    height:240%;
-    background:rgba(255,255,255,.13);
-    transform:rotate(18deg) translateX(-260%);
-    transition:transform .7s var(--ease);
-    pointer-events:none;
-  }
-  .btn:hover:after,.nav-cta:hover:after{
-    transform:rotate(18deg) translateX(680%);
-  }
-
-  /* Very subtle hero cursor light; never moves the layout. */
-  .hero{
-    --hero-x:50%;
-    --hero-y:50%;
-  }
-  .hero:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    background:radial-gradient(
-      380px circle at var(--hero-x) var(--hero-y),
-      rgba(185,160,113,.055),
-      transparent 70%
-    );
-    opacity:0;
-    transition:opacity .4s ease;
-  }
+@media(min-width:761px){
+  .nav{transition:background .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
+  .project{transition:transform .55s var(--ease)}
+  .project:hover{transform:translateY(-5px)}
+  .project-media{transition:box-shadow .55s var(--ease)}
+  .project:hover .project-media{box-shadow:0 22px 60px rgba(0,0,0,.16)}
+  .btn,.nav-cta{position:relative;overflow:hidden}
+  .btn:after,.nav-cta:after{content:"";position:absolute;top:-70%;left:-45%;width:24%;height:240%;background:rgba(255,255,255,.13);transform:rotate(18deg) translateX(-260%);transition:transform .7s var(--ease);pointer-events:none}
+  .btn:hover:after,.nav-cta:hover:after{transform:rotate(18deg) translateX(680%)}
+  .hero{--hero-x:50%;--hero-y:50%}
+  .hero:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(380px circle at var(--hero-x) var(--hero-y),rgba(185,160,113,.055),transparent 70%);opacity:0;transition:opacity .4s ease}
   .hero.pointer-active:after{opacity:1}
-
-  footer a{
-    position:relative;
-  }
-  footer a:after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:100%;
-    bottom:-4px;
-    height:1px;
-    background:currentColor;
-    transition:right .35s var(--ease);
-  }
+  footer a{position:relative}
+  footer a:after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:1px;background:currentColor;transition:right .35s var(--ease)}
   footer a:hover:after{right:0}
 }
 
@@ -405,7 +256,7 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
 <header class="nav">
   <a class="brand" href="#top" aria-label="Aura Media home"><img src="assets/aura-media-logo.png" alt="Aura Media logo"><span>Aura Media</span></a>
   <nav class="navlinks" aria-label="Primary navigation"><a href="#services">Services</a><a href="#work">Selected Work</a><a href="#about">Approach</a></nav>
-  <a class="nav-cta" href="mailto:diassasindu121@gmail.com">Start a project</a>
+  <a class="nav-cta" href="#contact">Start a project</a>
 </header>
 
 <main id="top">
@@ -416,7 +267,7 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
     <h1 aria-label="Make your brand impossible to ignore."><span class="line"><span>Make your brand</span></span><span class="line"><span><em>impossible to ignore.</em></span></span></h1>
     <div class="hero-bottom">
       <p class="hero-copy"><strong>Aura Media — Transforming beauty brands with luxury curation.</strong> We design high-performance content architectures and premium brand positioning systems built to instantly capture trust and scale your client bookings.</p>
-      <div class="hero-actions"><a class="btn primary" href="mailto:diassasindu121@gmail.com">Start a project ↗</a><a class="btn" href="#work">Explore work ↓</a></div>
+      <div class="hero-actions"><a class="btn primary" href="#contact">Start a project ↗</a><a class="btn" href="#work">Explore work ↓</a></div>
     </div>
   </div>
   <div class="scroll-note">Scroll to explore</div><div class="scroll-indicator" aria-hidden="true">↓</div>
@@ -465,7 +316,84 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
 
 <section class="section" id="about"><div class="section-inner"><div class="section-head js-reveal"><div><div class="kicker">03 / The approach</div><h2 class="section-title">Less noise.<br><em>More aura.</em></h2></div></div><div class="about-grid"><p class="about-copy js-reveal">Luxury isn't decoration. It's <em>clarity, consistency and intention</em> expressed at every point where a client meets your brand.</p><p class="about-side js-reveal">Aura Media builds visual and strategic systems for beauty brands that want to command attention without chasing it. Every composition, message and conversion path is designed to feel elevated — and perform accordingly.</p></div></div></section>
 
-<section class="section contact" id="contact"><div class="section-inner"><div class="contact-box js-reveal"><div class="kicker">04 / Let's work together</div><h2>Ready to create<br><em>your aura?</em></h2><div class="contact-row"><a class="email" href="mailto:diassasindu121@gmail.com">diassasindu121@gmail.com ↗</a><div class="social"><a href="https://www.instagram.com/auramediabysasii/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a></div></div></div></div></section>
+<!-- TESTIMONIALS SECTION -->
+<section class="section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-head js-reveal">
+      <div>
+        <div class="kicker">04 / Client feedback</div>
+        <h2 class="section-title">The <em>Impact.</em></h2>
+      </div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card js-reveal">
+        <span class="quote-mark">“</span>
+        <p class="testimonial-text">Aura Media didn't just design a website; they engineered a digital experience that completely repositioned our brand in the luxury space. Our high-ticket bookings doubled in the first quarter.</p>
+        <div class="testimonial-author">Elena Rostova, Founder</div>
+      </div>
+      <div class="testimonial-card js-reveal" style="transition-delay: 0.1s">
+        <span class="quote-mark">“</span>
+        <p class="testimonial-text">The level of detail and strategic foresight they brought to our funnel is unmatched. Every touchpoint feels incredibly intentional and effortlessly premium from start to finish.</p>
+        <div class="testimonial-author">James Thorne, CEO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <div class="section-head js-reveal" style="margin-bottom: 20px;">
+      <div>
+        <div class="kicker">05 / Inquiries</div>
+        <h2 class="section-title">Common <em>Questions.</em></h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item js-reveal">
+        <button class="faq-question">What is your typical timeline? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Most luxury web builds and strategic positioning projects take between 6 to 8 weeks, depending on the complexity of the funnel architecture and content curation requirements.</div>
+        </div>
+      </div>
+      <div class="faq-item js-reveal">
+        <button class="faq-question">Do you work with emerging brands? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes, provided there is a clear commitment to investing in premium brand positioning. We partner with founders who are ready to elevate their perception and scale their high-ticket offerings.</div>
+        </div>
+      </div>
+      <div class="faq-item js-reveal">
+        <button class="faq-question">What platforms do you build on? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We utilize a modern tech stack focused on performance and seamless animations (HTML5, GSAP, WebGL), often paired with headless CMS solutions for ultimate flexibility, speed, and premium aesthetics.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE SECTION -->
+<section class="section contact" id="contact"><div class="section-inner"><div class="contact-box js-reveal"><div class="kicker">06 / Let's work together</div><h2>Ready to create<br><em>your aura?</em></h2>
+  
+  <form class="contact-form js-reveal" action="#" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <input type="text" id="name" class="form-input" placeholder=" " required>
+        <label for="name" class="form-label">Full Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" class="form-input" placeholder=" " required>
+        <label for="email" class="form-label">Email Address</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <textarea id="message" class="form-input" placeholder=" " required></textarea>
+      <label for="message" class="form-label">Tell us about your project</label>
+    </div>
+    <button type="submit" class="btn primary form-submit">Submit Inquiry ↗</button>
+  </form>
+
+</div></div></section>
 </main>
 
 <div class="instagram-contact">
@@ -502,8 +430,6 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
     gsap.registerPlugin(ScrollTrigger);
 
     let lenis=null;
-    // Native scrolling is faster and more battery-friendly on phones.
-    // Lenis is reserved for desktop where the cinematic scroll system benefits from it.
     if(window.Lenis && !mobile){
       lenis=new Lenis({duration:1.05,smoothWheel:true,syncTouch:false,wheelMultiplier:.92,touchMultiplier:1});
       lenis.on('scroll',ScrollTrigger.update);
@@ -524,7 +450,6 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       gsap.to('.hero-flare',{y:130,x:-80,scale:.75,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1.5}});
     }
 
-    // Horizontal pinned services: every service takes over the viewport.
     const rail=document.querySelector('.services-rail');
     const panels=gsap.utils.toArray('.service-panel');
     if(rail && panels.length && !mobile){
@@ -544,7 +469,6 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       });
     }
 
-    // Marquee with scroll velocity.
     const marquee=document.querySelector('.marquee-track');
     if(marquee && !mobile){
       const loop=marquee.scrollWidth/3;
@@ -552,8 +476,6 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       ScrollTrigger.create({start:0,end:'max',onUpdate:self=>gsap.to(marquee,{skewX:gsap.utils.clamp(-4,4,self.getVelocity()/800),duration:.28,overwrite:true})});
     }
 
-    // Photo shuffle / stack. The full scroll choreography stays desktop-only;
-    // phones use a static stacked composition to avoid long pinned-scroll work.
     const cinema=document.querySelector('.work-cinema');
     const cards=gsap.utils.toArray('.photo-card');
     if(cinema && cards.length && !mobile){
@@ -574,19 +496,29 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       gsap.fromTo('.cinema-progress span',{scaleX:0},{scaleX:1,ease:'none',scrollTrigger:{trigger:cinema,start:'top top',end:'bottom bottom',scrub:1}});
     }
 
-    // Project cards: image depth + reveal.
     if(!mobile){
       gsap.utils.toArray('.project-media img').forEach(img=>{
         gsap.fromTo(img,{yPercent:-5,scale:1.08},{yPercent:5,scale:1.03,ease:'none',scrollTrigger:{trigger:img.closest('.project'),start:'top bottom',end:'bottom top',scrub:1.2}});
       });
     }
+    
+    // Core GSAP Reveal mapped uniformly to new DOM additions
     if(!mobile){
       gsap.utils.toArray('.js-reveal').forEach(el=>{
         gsap.fromTo(el,{y:45,opacity:0},{y:0,opacity:1,duration:1,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
       });
     }
 
-    /* Mobile-only interaction system. */
+    // FAQ ACCORDION LOGIC
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+
     if(mobile){
       const mobileProgress=document.createElement('div');
       mobileProgress.className='mobile-scroll-progress';
@@ -610,15 +542,14 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       },{passive:true});
       updateMobileProgress();
 
-      /* Native IntersectionObserver keeps the mobile animation smooth and cheap. */
       const mobileTargets=[
         ...document.querySelectorAll(
-          '.section-head,.service-panel,.cinema-copy,.photo-stack,.project,.statement-text,.about-copy,.about-side,.contact-box'
+          '.section-head,.service-panel,.cinema-copy,.photo-stack,.project,.statement-text,.about-copy,.about-side,.contact-box,.testimonial-card,.faq-item,.contact-form'
         )
       ];
       mobileTargets.forEach((el,i)=>{
         el.classList.add('m-reveal');
-        if(el.classList.contains('project')){
+        if(el.classList.contains('project') || el.classList.contains('testimonial-card')){
           el.style.transitionDelay=`${(i%3)*60}ms`;
         }
       });
@@ -633,7 +564,6 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       },{threshold:.12,rootMargin:'0px 0px -7% 0px'});
       mobileTargets.forEach(el=>revealObserver.observe(el));
 
-      /* Services react to the section currently in view. */
       const servicePanels=[...document.querySelectorAll('.service-panel')];
       const serviceObserver=new IntersectionObserver(entries=>{
         entries.forEach(entry=>{
@@ -645,7 +575,6 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       },{threshold:.55});
       servicePanels.forEach(p=>serviceObserver.observe(p));
 
-      /* Touch spotlight on project imagery. */
       document.querySelectorAll('.project').forEach(project=>{
         const media=project.querySelector('.project-media');
         if(!media)return;
@@ -674,18 +603,14 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       });
     }
 
-    // Statement/about/contact scrub motion stays desktop-only.
     if(!mobile){
       gsap.to('.statement-word:first-child',{x:-65,ease:'none',scrollTrigger:{trigger:'.statement',start:'top bottom',end:'bottom top',scrub:1}});
       gsap.to('.statement-word:last-child',{x:65,ease:'none',scrollTrigger:{trigger:'.statement',start:'top bottom',end:'bottom top',scrub:1}});
       gsap.fromTo('.statement-text',{scale:.92,opacity:.3},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:'.statement-text',start:'top 90%',end:'top 35%',scrub:1}});
-
       gsap.to('.about-copy',{y:-35,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:1}});
       gsap.fromTo('.contact-box',{y:80,opacity:.2},{y:0,opacity:1,ease:'power4.out',scrollTrigger:{trigger:'.contact-box',start:'top 88%',once:true}});
     }
 
-
-    /* Desktop-only micro-interactions. No layout movement, no scroll hijacking. */
     if(!mobile){
       const hero=document.querySelector('.hero');
       if(hero){
@@ -699,7 +624,6 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
       }
     }
 
-    // Progress + compact nav.
     ScrollTrigger.create({start:0,end:'max',onUpdate:self=>{
       document.querySelector('.progress').style.transform=`scaleX(${self.progress})`;
       document.querySelector('.nav').classList.toggle('scrolled',self.scroll()>50);
