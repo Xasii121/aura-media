@@ -95,15 +95,12 @@ h1{margin:0;max-width:1080px;font-size:clamp(4rem,10.4vw,10rem);line-height:.84;
 
 /* Lead Capture Upgrade */
 .contact{padding-top:100px}.contact-box{position:relative;overflow:hidden;border:1px solid var(--line);padding:75px 7vw;background:radial-gradient(circle at 80% 20%,rgba(185,160,113,.14),transparent 35%),#151512}.contact-box:before{content:"";position:absolute;width:340px;height:340px;border:1px solid rgba(185,160,113,.12);border-radius:50%;right:-80px;top:-120px}.contact-box h2{position:relative;font-size:clamp(3.6rem,7vw,7.5rem);line-height:.85;letter-spacing:-.07em;font-weight:500;margin:24px 0 50px}.contact-box h2 em{font-family:var(--serif)}
-.contact-form{display:grid;gap:35px;position:relative;z-index:2;max-width:800px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:35px}
-.form-group{position:relative;margin-top:12px}
-.form-input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);color:var(--paper);font-family:var(--sans);font-size:15px;padding:12px 0;outline:none;transition:border-color .4s var(--ease),box-shadow .4s var(--ease)}
-.form-input:focus{border-color:var(--gold);box-shadow:0 15px 30px -15px rgba(185,160,113,.15)}
-textarea.form-input{resize:vertical;min-height:90px}
-.form-label{position:absolute;left:0;top:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#77736c;pointer-events:none;transition:top .3s var(--ease),font-size .3s var(--ease),color .3s var(--ease)}
-.form-input:focus ~ .form-label, .form-input:not(:placeholder-shown) ~ .form-label{top:-16px;font-size:9px;color:var(--gold)}
-.form-submit{margin-top:15px;justify-self:start}
+.email-reveal{position:relative;z-index:2;max-width:800px;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.email-reveal-button{appearance:none;border:1px solid var(--line);background:transparent;color:var(--paper);min-height:52px;padding:0 22px;border-radius:999px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.45s var(--ease)}
+.email-reveal-button:hover{transform:translateY(-3px);border-color:var(--gold);color:var(--gold)}
+.email-reveal-address{display:inline-flex;align-items:center;gap:10px;color:var(--paper);font-size:clamp(1rem,2vw,1.35rem);letter-spacing:-.02em;opacity:0;transform:translateY(10px);pointer-events:none;max-height:0;overflow:hidden;transition:opacity .45s var(--ease),transform .45s var(--ease),max-height .45s var(--ease)}
+.email-reveal.is-revealed .email-reveal-address{opacity:1;transform:none;pointer-events:auto;max-height:80px}
+.email-reveal-address:hover{color:var(--gold)}
 
 footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px}
 
@@ -375,23 +372,10 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
 <!-- LEAD CAPTURE SECTION -->
 <section class="section contact" id="contact"><div class="section-inner"><div class="contact-box js-reveal"><div class="kicker">06 / Let's work together</div><h2>Ready to create<br><em>your aura?</em></h2>
   
-  <form class="contact-form js-reveal" action="#" method="POST">
-    <div class="form-row">
-      <div class="form-group">
-        <input type="text" id="name" class="form-input" placeholder=" " required>
-        <label for="name" class="form-label">Full Name</label>
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" class="form-input" placeholder=" " required>
-        <label for="email" class="form-label">Email Address</label>
-      </div>
-    </div>
-    <div class="form-group">
-      <textarea id="message" class="form-input" placeholder=" " required></textarea>
-      <label for="message" class="form-label">Tell us about your project</label>
-    </div>
-    <button type="submit" class="btn primary form-submit">Submit Inquiry ↗</button>
-  </form>
+  <div class="email-reveal js-reveal" id="email-reveal">
+    <button type="button" class="email-reveal-button" id="reveal-email">Reveal email ↗</button>
+    <a class="email-reveal-address" id="email-address" href="mailto:diassasindu121@gmail.com" aria-label="Email Aura Media">diassasindu121@gmail.com ↗</a>
+  </div>
 
 </div></div></section>
 </main>
@@ -423,6 +407,19 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
     document.querySelectorAll('.js-reveal,.hero-item,.hero-copy,.hero-actions,h1 .line>span').forEach(el=>{el.style.opacity='1';el.style.transform='none'});
     return;
   }
+
+  const revealEmail=()=>{
+    const wrap=document.querySelector('#email-reveal');
+    const button=document.querySelector('#reveal-email');
+    if(!wrap || !button) return;
+    button.addEventListener('click',()=>{
+      wrap.classList.add('is-revealed');
+      button.textContent='Email revealed ✓';
+      button.disabled=true;
+      button.setAttribute('aria-expanded','true');
+    });
+  };
+  revealEmail();
 
   window.addEventListener('load',()=>setTimeout(()=>{
     finish();
@@ -544,7 +541,7 @@ footer{border-top:1px solid var(--line);padding:25px 6vw;color:#77736c;font-size
 
       const mobileTargets=[
         ...document.querySelectorAll(
-          '.section-head,.service-panel,.cinema-copy,.photo-stack,.project,.statement-text,.about-copy,.about-side,.contact-box,.testimonial-card,.faq-item,.contact-form'
+          '.section-head,.service-panel,.cinema-copy,.photo-stack,.project,.statement-text,.about-copy,.about-side,.contact-box,.testimonial-card,.faq-item,.email-reveal'
         )
       ];
       mobileTargets.forEach((el,i)=>{
