@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c0b09">
+<meta name="description" content="How Aura Media works — discovery, positioning, design and build, launch and iterate.">
+<title>Approach — Aura Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="is-loading">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="liquid-distort" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise"/>
+    <feGaussianBlur in="noise" stdDeviation="2" result="blurred"/>
+    <feDisplacementMap in="SourceGraphic" in2="blurred" scale="34" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="loader" aria-hidden="true"><div class="loader-inner"><img class="loader-mark" src="assets/aura-media-logo.png" alt=""><div class="loader-line"></div><div class="loader-text">Aura Media</div></div></div>
+<div class="progress" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav glass" id="siteNav">
+  <a class="brand" href="index.html" aria-label="Aura Media home"><img src="assets/aura-media-logo.png" alt="Aura Media logo"><span>Aura Media</span></a>
+  <div class="nav-right">
+    <nav class="navlinks" aria-label="Primary navigation"><a href="index.html#services">Services</a><a href="index.html#bloom">Bloom</a><a href="index.html#work">Work</a><a href="approach.html" aria-current="page">Approach</a></nav>
+    <a class="nav-cta" href="index.html#contact">Start a project</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<section class="case-hero">
+  <div class="case-hero-inner">
+    <div class="case-tag js-reveal">How we work</div>
+    <h1 class="case-title js-reveal">Growth, done in <em>the right order.</em></h1>
+    <p class="case-dek js-reveal">Luxury positioning without a working conversion path is just decoration. A working conversion path without a considered aesthetic doesn't hold attention long enough to convert. We build in an order that gets you both.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="approach-steps">
+
+      <div class="approach-step js-reveal">
+        <div class="approach-step-num glass">01</div>
+        <div class="approach-step-body">
+          <h3>Discovery <em>&amp; audit.</em></h3>
+          <p>Before any design work starts, we look at what's already there — your current site, socials, booking flow, and where people actually drop off. Positioning decisions get made from evidence, not assumption.</p>
+        </div>
+      </div>
+
+      <div class="approach-step js-reveal">
+        <div class="approach-step-num glass">02</div>
+        <div class="approach-step-body">
+          <h3>Positioning <em>&amp; strategy.</em></h3>
+          <p>We define the perception your brand needs to earn — the tone, the visual language, the story — and where in the client journey trust actually needs to be built. This becomes the brief everything else is measured against.</p>
+        </div>
+      </div>
+
+      <div class="approach-step js-reveal">
+        <div class="approach-step-num glass">03</div>
+        <div class="approach-step-body">
+          <h3>Design <em>&amp; build.</em></h3>
+          <p>Visual system, content curation and the funnel itself get built together, not in sequence — so the aesthetic and the conversion path are never fighting each other. Every animation earns its place or it doesn't ship.</p>
+        </div>
+      </div>
+
+      <div class="approach-step js-reveal">
+        <div class="approach-step-num glass">04</div>
+        <div class="approach-step-body">
+          <h3>Launch <em>&amp; iterate.</em></h3>
+          <p>A site launching is the start of the feedback loop, not the end of the project. We watch how real visitors actually move through it and refine the parts that don't earn their keep.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-box glass js-reveal"><div class="glass-edge"></div>
+      <h2>Ready to work<br><em>this way?</em></h2>
+      <div class="email-reveal" id="email-reveal">
+        <button type="button" class="email-reveal-button" id="reveal-email">Reveal email</button>
+        <a class="email-reveal-address" id="email-address" href="mailto:diassasindu121@gmail.com" aria-label="Email Aura Media">diassasindu121@gmail.com ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="instagram-contact">
+  <span class="instagram-label glass">DM Aura Media</span>
+  <a class="instagram-button glass" href="https://www.instagram.com/auramediabysasii/" target="_blank" rel="noopener noreferrer" aria-label="DM Aura Media on Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.7" r="1"></circle></svg>
+  </a>
+</div>
+
+<footer><div class="footer-inner"><span>© 2026 Aura Media</span><span>Luxury content, strategy, conversion</span></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

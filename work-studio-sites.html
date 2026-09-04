@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c0b09">
+<meta name="description" content="Case study: Studio Sites — a personal brand portfolio built for a network-engineering student.">
+<title>Studio Sites — Case Study — Aura Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="is-loading">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="liquid-distort" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise"/>
+    <feGaussianBlur in="noise" stdDeviation="2" result="blurred"/>
+    <feDisplacementMap in="SourceGraphic" in2="blurred" scale="34" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="loader" aria-hidden="true"><div class="loader-inner"><img class="loader-mark" src="assets/aura-media-logo.png" alt=""><div class="loader-line"></div><div class="loader-text">Aura Media</div></div></div>
+<div class="progress" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav glass" id="siteNav">
+  <a class="brand" href="index.html" aria-label="Aura Media home"><img src="assets/aura-media-logo.png" alt="Aura Media logo"><span>Aura Media</span></a>
+  <div class="nav-right">
+    <nav class="navlinks" aria-label="Primary navigation"><a href="index.html#services">Services</a><a href="index.html#bloom">Bloom</a><a href="index.html#work">Work</a><a href="approach.html">Approach</a></nav>
+    <a class="nav-cta" href="index.html#contact">Start a project</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<section class="case-hero">
+  <div class="case-hero-inner">
+    <a class="breadcrumb js-reveal" href="index.html#work">← Back to work</a>
+    <div class="case-tag js-reveal">Case study — Personal brand</div>
+    <h1 class="case-title js-reveal">Studio <em>Sites.</em></h1>
+    <p class="case-dek js-reveal">A portfolio built to make a Sri Lankan A/L student's path toward network engineering legible to recruiters and collaborators — before a single conversation happens.</p>
+    <div class="case-meta js-reveal">
+      <div>Sector<strong>Personal / tech</strong></div>
+      <div>Focus<strong>Brand voice, information architecture</strong></div>
+      <div>Live site<strong><a href="https://xasii121.github.io/portfolio/" target="_blank" rel="noopener noreferrer">xasii121.github.io ↗</a></strong></div>
+    </div>
+  </div>
+  <div class="case-hero-inner">
+    <div class="case-media js-reveal"><img src="assets/project-studio-sites.png" alt="Studio Sites hero screen — dark network-themed portfolio for Sasindu Roshan"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="case-body js-reveal">
+      <h2>The <em>brief.</em></h2>
+      <p>Most student portfolios read like a resume with a header font swapped in. This one needed to do something harder: signal a specific direction — network and cloud engineering — to an audience of recruiters and collaborators who'd give it maybe four seconds before deciding whether to keep reading.</p>
+      <p>The aesthetic had to argue the case before the copy did.</p>
+    </div>
+
+    <div class="case-detail-grid">
+      <div class="glass tilt-card js-reveal"><div class="glass-edge"></div><h3>Aesthetic direction</h3><p>A dark, server-rack-and-fiber visual language with a mint-teal gradient wordmark — the kind of palette that reads "infrastructure" instantly, without a single icon of a router.</p></div>
+      <div class="glass tilt-card js-reveal" style="transition-delay:.08s"><div class="glass-edge"></div><h3>Interface as signal</h3><p>A ⌘K command palette and a live "RTT / FX" status readout in the nav aren't just decoration — they're small, specific details that a technically literate visitor recognizes and reads as credibility.</p></div>
+      <div class="glass tilt-card js-reveal" style="transition-delay:.16s"><div class="glass-edge"></div><h3>Honest positioning</h3><p>The hero states the reality plainly — a 20-year-old A/L Mathematics student building toward the field — rather than overstating experience. Confidence without inflation reads better to the people actually hiring.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="case-body js-reveal">
+      <h2>The <em>approach.</em></h2>
+      <p>Three clear calls to action — Explore the work, Let's connect, Download CV — cover the three things a visitor actually wants to do, in the order they're most likely to want them. Nothing is buried behind a hover state or a second click.</p>
+      <p>The navigation itself (About, Skills, Work, Tools, Activity, Contact) is scoped tightly to what a recruiter is scanning for, rather than padded out with sections that exist only to make the site look bigger.</p>
+    </div>
+  </div>
+</section>
+
+<div class="case-next">
+  <div><div class="case-next-label">Next case study</div><a class="case-next-title" href="work-awishka-studio.html">Awishka <em>Studio</em> →</a></div>
+  <a class="btn primary" href="index.html#contact">Start a project</a>
+</div>
+
+</main>
+
+<div class="instagram-contact">
+  <span class="instagram-label glass">DM Aura Media</span>
+  <a class="instagram-button glass" href="https://www.instagram.com/auramediabysasii/" target="_blank" rel="noopener noreferrer" aria-label="DM Aura Media on Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.7" r="1"></circle></svg>
+  </a>
+</div>
+
+<footer><div class="footer-inner"><span>© 2026 Aura Media</span><span>Luxury content, strategy, conversion</span></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
