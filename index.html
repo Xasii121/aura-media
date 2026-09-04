@@ -322,7 +322,7 @@ footer{border-top:1px solid var(--line);padding:24px 6vw;color:#726d63;font-size
       <p>Three disciplines, one outcome: a brand that reads as premium before a client reads a word of copy.</p>
     </div>
 
-    <div class="bloom-canvas-wrap" id="bloomCanvasWrap"><canvas id="bloomCanvas" width="760" height="760"></canvas></div>
+    <div class="bloom-canvas-wrap" id="bloomCanvasWrap"><canvas id="bloomCanvas" width="900" height="900"></canvas></div>
 
     <div class="spiral-tiles">
       <div class="spiral-tile glass"><div class="glass-edge"></div><h3>Luxury Content <em>Curation.</em></h3><p>High-end aesthetic visual layouts, typography systems and elegant asset mapping.</p></div>
@@ -475,7 +475,24 @@ footer{border-top:1px solid var(--line);padding:24px 6vw;color:#726d63;font-size
   const frames = [];
   const canvas = document.getElementById('bloomCanvas');
   const ctx = canvas ? canvas.getContext('2d') : null;
+  let lastDrawnIdx = 0;
   function frameSrc(i){ return `assets/bloom/f_${String(i+1).padStart(3,'0')}.webp`; }
+
+  /* size the canvas backing store to actual device pixels (not just its CSS
+     box), so retina/high-DPI screens don't get an extra layer of browser
+     upscaling blur on top of the source frames. */
+  function sizeCanvas(){
+    if(!canvas) return;
+    const wrap = canvas.parentElement;
+    const rect = wrap.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.max(1, Math.round(rect.width * dpr));
+    const h = Math.max(1, Math.round(rect.height * dpr));
+    if(canvas.width !== w || canvas.height !== h){
+      canvas.width = w; canvas.height = h;
+    }
+  }
+
   function drawFrame(idx){
     if(!ctx) return;
     idx = Math.max(0, Math.min(TOTAL_FRAMES-1, idx));
@@ -490,18 +507,28 @@ footer{border-top:1px solid var(--line);padding:24px 6vw;color:#726d63;font-size
       img = found;
     }
     if(!img) return;
+    lastDrawnIdx = idx;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    const scale = Math.max(canvas.width/img.naturalWidth, canvas.height/img.naturalHeight);
+    /* source frames are square (900x900) and the canvas is square, so
+       contain === cover here — no forced upscale, no cropped edges. */
+    const scale = Math.min(canvas.width/img.naturalWidth, canvas.height/img.naturalHeight);
     const w = img.naturalWidth*scale, h = img.naturalHeight*scale;
     ctx.drawImage(img, (canvas.width-w)/2, (canvas.height-h)/2, w, h);
   }
   for(let i=0;i<TOTAL_FRAMES;i++){
     const img = new Image();
     img.decoding='async';
-    img.onload = ()=>{ if(i===0) drawFrame(0); };
+    img.onload = ()=>{ if(i===0){ sizeCanvas(); drawFrame(0); } };
     img.src = frameSrc(i);
     frames.push(img);
   }
+  let resizeTimer;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(()=>{ sizeCanvas(); drawFrame(lastDrawnIdx); }, 150);
+  });
 
   gsap.registerPlugin(ScrollTrigger);
 
